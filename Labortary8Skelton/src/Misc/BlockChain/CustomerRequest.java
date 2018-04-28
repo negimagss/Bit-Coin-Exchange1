@@ -15,7 +15,16 @@ public class CustomerRequest {
     private String sName;//custname
     private int sValue;// total amount
     private String sType;//type of coin required
+    private String sApproval;
 
+    public String getsApproval() {
+        return sApproval;
+    }
+
+    public void setsApproval(String sApproval) {
+        this.sApproval = sApproval;
+    }
+    
     public String getsName() {
         return sName;
     }
@@ -42,5 +51,8 @@ public class CustomerRequest {
    
     
    
+     public String toString(){
+        return this.getsName();
+    }
     
 }

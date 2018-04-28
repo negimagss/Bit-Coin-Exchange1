@@ -64,6 +64,30 @@ public class UserAccount {
 
     
     
+    
+    
+    
+    
+        
+    public  boolean flag=false;
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+    public String sAprovalCustomer="Custom";
+
+    public String getsAprovalCustomer() {
+        return sAprovalCustomer;
+    }
+
+    public void setsAprovalCustomer(String sAprovalCustomer) {
+        this.sAprovalCustomer = sAprovalCustomer;
+    }
+    
     @Override
     public String toString() {
         return username;

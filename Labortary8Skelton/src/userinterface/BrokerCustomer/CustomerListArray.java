@@ -42,8 +42,8 @@ public class CustomerListArray {
         this.custarr.add(cust);
         
         cust= new Customers();;
-        cust.setCryptoType("BitCoin");
-        cust.setCrytoValue("10");
+        cust.setCryptoType("Ethernet");
+        cust.setCrytoValue("1000");
         cust.setCustomername("Kevin");
                 cust.setBalanceAfterDeduct(0);
 
@@ -67,6 +67,18 @@ public class CustomerListArray {
     
     }
 
+    
+    public int iBrokersBalance;
+
+    public int getiBrokersBalance() {
+        return iBrokersBalance;
+    }
+
+    public void setiBrokersBalance(int iBrokersBalance) {
+        this.iBrokersBalance = iBrokersBalance;
+    }
+    
+    
 // to add customer details who int
   public void addCustomer(Customers cust){
       this.custarr.add(cust);

@@ -11,6 +11,7 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -48,16 +49,15 @@ public class ExchangeManagerJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
         
         model.setRowCount(0);
-        for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
+       // for (WorkRequest request : userAccount.getWorkQueue().getWorkRequestList()){
             Object[] row = new Object[4];
-            row[0] = request.getMessage();
-            row[1] = request.getReceiver();
-            row[2] = request.getStatus();
-            String result = ((LabTestWorkRequest) request).getTestResult();
-            row[3] = result == null ? "Waiting" : result;
+            row[0] = userAccount.getsAprovalCustomer();
+            row[1] = userAccount.isFlag();
+           
+           
             
             model.addRow(row);
-        }
+        //}
     }
 
     
@@ -85,14 +85,14 @@ public class ExchangeManagerJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Exchange Comment", "Broker", "Status", "Approval Status"
+                "Customer", "Approval Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -106,8 +106,6 @@ public class ExchangeManagerJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(workRequestJTable);
         if (workRequestJTable.getColumnModel().getColumnCount() > 0) {
             workRequestJTable.getColumnModel().getColumn(1).setResizable(false);
-            workRequestJTable.getColumnModel().getColumn(2).setResizable(false);
-            workRequestJTable.getColumnModel().getColumn(3).setResizable(false);
         }
 
         requestTestJButton.setText("Approve");
@@ -188,9 +186,16 @@ public class ExchangeManagerJPanel extends javax.swing.JPanel {
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
         
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("RequestLabTestJPanel", new RequestExchanngeJPanel(userProcessContainer, userAccount, enterprise));
-        layout.next(userProcessContainer);
+
+
+        userAccount.setFlag(true);
+        
+        
+        JOptionPane.showMessageDialog(null,"Approved!!");
+
+//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//        userProcessContainer.add("RequestLabTestJPanel", new RequestExchanngeJPanel(userProcessContainer, userAccount, enterprise));
+//        layout.next(userProcessContainer);
         
     }//GEN-LAST:event_requestTestJButtonActionPerformed
 

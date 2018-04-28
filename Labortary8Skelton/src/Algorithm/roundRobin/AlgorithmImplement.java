@@ -17,11 +17,6 @@ public class AlgorithmImplement extends CustomerListArray {
    // CustomerListArray<> custarr;
     public AlgorithmImplement() {
         super();
-        
-        //CustomerListArray custarr = new CustomerListArray();
-        
-        
-       // this.custarr = custarr; 
    }
     
     

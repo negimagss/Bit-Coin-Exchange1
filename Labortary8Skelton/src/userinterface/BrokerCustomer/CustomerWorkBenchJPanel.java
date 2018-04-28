@@ -54,6 +54,8 @@ public class CustomerWorkBenchJPanel extends javax.swing.JPanel {
         SellCryptoBtn = new javax.swing.JButton();
         back = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(0, 255, 255));
+
         jLabel1.setText("Welcome Customer ");
 
         buyCryptoBtn.setText("Buy Crypto Currency");

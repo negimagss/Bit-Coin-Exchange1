@@ -63,6 +63,10 @@ public class Customers extends CryptoRepository {
     public String toString(){
         return this.getCustomername();
     }
+
+    public void setCustomerBalance(double bal) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

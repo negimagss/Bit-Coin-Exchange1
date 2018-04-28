@@ -11,6 +11,7 @@ import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
 import Misc.BlockChain.CustRequestArray;
 import Misc.BlockChain.CustomerRequest;
+import com.db4o.collections.ActivatableArrayList;
 import java.util.ArrayList;
 import userinterface.BrokerCustomer.CryptoArralist;
 
@@ -28,7 +29,6 @@ public abstract class Organization {
     private static int counter;
     
     
-    public ArrayList<CustomerRequest> custreq;
     
     
     
@@ -55,34 +55,16 @@ AlgorithmImplement alg;
         
         this.custreq = new ArrayList<CustomerRequest>();
          alg= new AlgorithmImplement();
-        
         // instantiate other objects 
         
     }
 
-    public AlgorithmImplement getAlg() {
-        return alg;
-    }
+      public ArrayList<CustomerRequest> custreq;
 
-    public void setAlg(AlgorithmImplement alg) {
-        this.alg = alg;
-    }
+  
 
-    public ArrayList<CustomerRequest> getCustreq() {
-        return custreq;
-    }
 
-    public void setCustreq(ArrayList<CustomerRequest> custreq) {
-        this.custreq = custreq;
-    }
-
-    // will add the values from the customer request
-    public void addCustRequestforCoin(CustomerRequest cus){
-        
-        
-        
-        this.custreq.add(cus);
-    }  
+     
     
     
     public abstract ArrayList<Role> getSupportedRole();
@@ -115,6 +97,27 @@ AlgorithmImplement alg;
         this.workQueue = workQueue;
     }
 
+    
+    
+   public String sCustomerApproval; 
+
+    public String getsCustomerApproval() {
+        return sCustomerApproval;
+    }
+
+    public void setsCustomerApproval(String sCustomerApproval) {
+        this.sCustomerApproval = sCustomerApproval;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @Override
     public String toString() {
         return name;

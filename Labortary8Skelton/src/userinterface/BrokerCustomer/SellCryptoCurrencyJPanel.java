@@ -11,6 +11,7 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -51,9 +52,11 @@ public class SellCryptoCurrencyJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
+        TxtSold = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(0, 255, 255));
 
         jTextField1.setEnabled(false);
 
@@ -70,6 +73,11 @@ public class SellCryptoCurrencyJPanel extends javax.swing.JPanel {
         jLabel4.setText("Sell Crypto Currency");
 
         jButton1.setText("Sell Crypto-Currency");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Amount to be sold:");
 
@@ -100,7 +108,7 @@ public class SellCryptoCurrencyJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel5)
                         .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtSold, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(21, 21, 21)
@@ -141,7 +149,7 @@ public class SellCryptoCurrencyJPanel extends javax.swing.JPanel {
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtSold, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addContainerGap(153, Short.MAX_VALUE))
         );
@@ -159,8 +167,48 @@ public class SellCryptoCurrencyJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      
+        
+        try{
+        String totalcoins = TxtSold.getText();
+        
+        int coin=Integer.parseInt(totalcoins);
+        int earlier = business.custreq.get(0).getsValue();
+        
+        if(coin>earlier){
+                           JOptionPane.showMessageDialog(null,"Cannot be greater then what you have!!");
+
+        }
+        else{
+        
+        jTextField1.setText( business.custreq.get(0).getsType());
+       jTextField2.setText(String.valueOf(business.custreq.get(0).getsValue()));
+       jTextField3.setText(String.valueOf(business.custreq.get(0).getsValue()*4000));
+       
+       //String totalcoins = TxtSold.getText();// coins to be sold
+       
+       
+       
+       
+       business.setBrokersReturn(Integer.parseInt(totalcoins));
+       business.addBrokersMoney(Integer.parseInt(totalcoins));
+               JOptionPane.showMessageDialog(null,"Your Order has reached the broker!!");
+        jTextField2.setText(String.valueOf(earlier-coin));
+
+        }
+        }
+        catch(Exception e){
+                    JOptionPane.showMessageDialog(null,"Please enter a value!!");
+
+        }
+          
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TxtSold;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -171,6 +219,5 @@ public class SellCryptoCurrencyJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }
