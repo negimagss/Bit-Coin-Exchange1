@@ -1,4 +1,4 @@
-# bitcoinExchange
+# Bit-coin Exchange
 
 Swing application for Stock Exchannge for Buying/Sellping of Bit-Coins 
 
